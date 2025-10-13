@@ -15,3 +15,11 @@ steps:
     DefaultVersion: true
     AddToolsToPath: true
 
+- task: PowerPlatformExportSolution@2
+  inputs:
+    authenticationType: 'PowerPlatformSPN'
+    PowerPlatformSPN: 'Diplomadossier service connection'
+    SolutionName: 'Diplomadossier'
+    SolutionOutputFile: '$(Build.ArtifactStagingDirectory)\DiplomaDossier.zip'
+    AsyncOperation: true
+    MaxAsyncWaitTime: '60'
