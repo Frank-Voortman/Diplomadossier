@@ -8,13 +8,20 @@ trigger:
 
 pool:
   vmImage: windows-latest
-  
+
 steps:
 - task: PowerPlatformToolInstaller@2
   inputs:
     DefaultVersion: true
     AddToolsToPath: true
-
+- task: PowerPlatformAssignUser@2   
+  displayName: 'Power Platform Assign User'
+  inputs:
+    authenticationType: PowerPlatformSPN
+    PowerPlatformSPN: 'Diplomadossier service connection'
+    User: 3d5952fc-ddd2-4d17-a383-cf1c7dfa5386
+    Role: Systeembeheerder
+    ApplicationUser: true
 - task: PowerPlatformExportSolution@2
   inputs:
     authenticationType: 'PowerPlatformSPN'
